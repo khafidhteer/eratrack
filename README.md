@@ -309,6 +309,22 @@ Distributed under the MIT License. See [LICENSE](LICENSE) for full text.
 
 ### Calculation Methodology
 
+### Result Interpretation
+
+Results show plain-language feedback instead of raw Z-scores:
+
+| Z-score range | Category | Color | Meaning |
+|---------------|----------|-------|---------|
+| < -3 | Severely low | 🔴 | Below 99.9% of peers — consider consult |
+| -3 to -2 | Low | 🟡 | Below expected range |
+| -2 to -1 | Slightly low | 🟢 | Within normal variation |
+| -1 to 1 | Optimal | 🟢 | Healthy range |
+| 1 to 2 | Slightly high | 🟢 | Within normal variation |
+| 2 to 3 | High | 🟡 | Above expected range |
+| > 3 | Severely high | 🔴 | Above 99.9% of peers — consider consult |
+
+The worst metric across all selected measurements drives the hero headline.
+
 Z-scores are calculated using the LMS method:
 
 ```
@@ -321,3 +337,15 @@ Where:
 - **S** — Sigma (coefficient of variation)
 
 Percentiles are derived from the Z-score using the standard normal cumulative distribution function (CDF).
+
+### Growth Charts
+
+The chart displays three centile curves:
+
+| Line | Color | Meaning |
+|------|-------|---------|
+| **P50** (median) | 🟢 Green (`#22c55e`) | Expected value for age |
+| **P5** (lower) | 🔴 Red (`rgba(239,68,68,0.35)`) | Lower threshold |
+| **P95** (upper) | 🔴 Red (`rgba(239,68,68,0.35)`) | Upper threshold |
+
+Your measurement is plotted as a gold dot (● You) on the chart. A legend box in the top-right corner identifies the lines.
