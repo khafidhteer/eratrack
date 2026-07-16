@@ -1,0 +1,94 @@
+{
+  "app": { "name": "EraTrack" },
+  "welcome": {
+    "title": "EraTrack",
+    "subtitle": "Growth Tracking for Every Life Stage",
+    "desc": "Privacy-first growth monitoring. No login. No servers. 100% on your device.",
+    "cta": "Start Tracking",
+    "badge_privacy": "🔒 100% Private",
+    "badge_offline": "📱 Works Offline",
+    "badge_free": "💰 Free Forever"
+  },
+  "profile": {
+    "heading": "Tell Us About Yourself",
+    "name_label": "Name / Alias",
+    "name_placeholder": "e.g., Alex",
+    "dob_label": "Date of Birth",
+    "sex_label": "Biological Sex",
+    "male": "Male",
+    "female": "Female",
+    "country_label": "Country",
+    "search_country": "Search country...",
+    "gestational_label": "Gestational Age at Birth",
+    "weeks": "weeks",
+    "corrected_age": "Use corrected age for calculations",
+    "continue_btn": "Continue"
+  },
+  "metrics": {
+    "heading": "What Would You Like to Track?",
+    "subtitle": "Select growth metrics for {age_group}",
+    "continue_btn": "Continue ({count} selected)",
+    "pregnancy": "Pregnancy",
+    "infancy": "Infancy (0-2 years)",
+    "childhood": "Childhood (2-12 years)",
+    "adolescence": "Adolescence (12-18 years)",
+    "adulthood": "Adulthood (18-60 years)",
+    "eldercare": "Elder Care (60+)",
+    "cdc_growth_curve": "CDC Growth Curve"
+  },
+  "input": {
+    "heading": "Enter Measurements",
+    "date_label": "Measurement Date",
+    "calculate_btn": "Calculate",
+    "ref_hint": "Reference 50th percentile at this age: {value}",
+    "used_by": "Used by: {metrics}"
+  },
+  "results": {
+    "optimal_title": "Growing Strong & Right on Track!",
+    "optimal_subtitle": "Optimal Range (Within Normal Centiles)",
+    "high_title": "Reaching for the Stars (Future Athlete Alert!)",
+    "high_subtitle": "Advanced Growth Segment",
+    "low_title": "Small and Mighty (Thriving at My Own Pace)",
+    "low_subtitle": "Unique Growth Trajectory",
+    "new_measurement": "+ New Measurement",
+    "zscore": "Z-Score: {value}",
+    "percentile": "Percentile: {value}%",
+    "your_value": "Your {metric}",
+    "your_inputs": "Your Inputs",
+    "derived_from": "Calculated from your inputs"
+  },
+  "share": {
+    "heading": "Share Your Milestone",
+    "whatsapp": "WhatsApp",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
+    "more": "More",
+    "download": "⬇ Download Image",
+    "text": "I just checked my growth on EraTrack! 🎉 {title} - Track yours at eratrack.jtr-lab.com"
+  },
+  "global_notice": "Calculation Notice: This profile is evaluated using Global Health Standards (WHO/CDC).",
+  "global_notice_cta": "Methodology",
+  "methodology": {
+    "heading": "Calculation Methodology",
+    "zscore_title": "Z-Score Formula",
+    "l_desc": "Lambda (Box-Cox power transformation)",
+    "m_desc": "Mu (median reference value)",
+    "s_desc": "Sigma (coefficient of variation)",
+    "percentile_title": "Percentile Calculation",
+    "percentile_desc": "Percentile is derived from the Z-score using the standard normal cumulative distribution function.",
+    "refs_title": "References",
+    "ref_who": "WHO Child Growth Standards (2006)",
+    "ref_cdc": "CDC Growth Charts (2000)",
+    "ref_kemenkes": "Kemenkes Standar Antropometri (2020)"
+  },
+  "ui": {
+    "back": "Back",
+    "toggle_theme": "Toggle dark mode",
+    "select_date": "Select date...",
+    "no_results": "No results found",
+    "loading": "Loading..."
+  },
+  "footer": {
+    "text": "EraTrack · 100% Private · No Data Leaves Your Device"
+  }
+}

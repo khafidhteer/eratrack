@@ -1,0 +1,94 @@
+{
+  "app": { "name": "EraTrack" },
+  "welcome": {
+    "title": "EraTrack",
+    "subtitle": "Pemantauan Pertumbuhan untuk Setiap Tahap Kehidupan",
+    "desc": "Pemantauan pertumbuhan yang mengutamakan privasi. Tanpa login. Tanpa server. 100% di perangkat Anda.",
+    "cta": "Mulai Pantau",
+    "badge_privacy": "🔒 100% Privat",
+    "badge_offline": "📱 Bisa Offline",
+    "badge_free": "💰 Gratis Selamanya"
+  },
+  "profile": {
+    "heading": "Ceritakan Tentang Dirimu",
+    "name_label": "Nama / Panggilan",
+    "name_placeholder": "Misal: Alex",
+    "dob_label": "Tanggal Lahir",
+    "sex_label": "Jenis Kelamin",
+    "male": "Laki-laki",
+    "female": "Perempuan",
+    "country_label": "Negara",
+    "search_country": "Cari negara...",
+    "gestational_label": "Usia Kehamilan saat Lahir",
+    "weeks": "minggu",
+    "corrected_age": "Gunakan usia koreksi untuk perhitungan",
+    "continue_btn": "Lanjutkan"
+  },
+  "metrics": {
+    "heading": "Apa yang Ingin Anda Pantau?",
+    "subtitle": "Pilih metrik pertumbuhan untuk {age_group}",
+    "continue_btn": "Lanjutkan ({count} dipilih)",
+    "pregnancy": "Kehamilan",
+    "infancy": "Bayi (0-2 tahun)",
+    "childhood": "Anak-anak (2-12 tahun)",
+    "adolescence": "Remaja (12-18 tahun)",
+    "adulthood": "Dewasa (18-60 tahun)",
+    "eldercare": "Lansia (60+)",
+    "cdc_growth_curve": "Kurva Pertumbuhan CDC"
+  },
+  "input": {
+    "heading": "Masukkan Pengukuran",
+    "date_label": "Tanggal Pengukuran",
+    "calculate_btn": "Hitung",
+    "ref_hint": "Referensi persentil ke-50 pada usia ini: {value}",
+    "used_by": "Digunakan oleh: {metrics}"
+  },
+  "results": {
+    "optimal_title": "Tumbuh Kuat & Tepat di Jalur!",
+    "optimal_subtitle": "Rentang Optimal (Dalam Persentil Normal)",
+    "high_title": "Menjulang Tinggi (Calon Atlet Masa Depan!)",
+    "high_subtitle": "Segmen Pertumbuhan Lanjutan",
+    "low_title": "Kecil namun Perkasa (Tumbuh dengan Ritme Sendiri)",
+    "low_subtitle": "Lintasan Pertumbuhan Unik",
+    "new_measurement": "+ Pengukuran Baru",
+    "zscore": "Z-Score: {value}",
+    "percentile": "Persentil: {value}%",
+    "your_value": "{metric} Anda",
+    "your_inputs": "Input Anda",
+    "derived_from": "Dihitung dari input Anda"
+  },
+  "share": {
+    "heading": "Bagikan Capaian Anda",
+    "whatsapp": "WhatsApp",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
+    "more": "Lainnya",
+    "download": "⬇ Unduh Gambar",
+    "text": "Saya baru saja memeriksa pertumbuhan saya di EraTrack! 🎉 {title} - Pantau juga di eratrack.jtr-lab.com"
+  },
+  "global_notice": "Pemberitahuan: Profil ini dievaluasi menggunakan Standar Kesehatan Global (WHO/CDC).",
+  "global_notice_cta": "Metodologi",
+  "methodology": {
+    "heading": "Metodologi Perhitungan",
+    "zscore_title": "Rumus Z-Score",
+    "l_desc": "Lambda (transformasi daya Box-Cox)",
+    "m_desc": "Mu (nilai referensi median)",
+    "s_desc": "Sigma (koefisien variasi)",
+    "percentile_title": "Perhitungan Persentil",
+    "percentile_desc": "Persentil diturunkan dari Z-Score menggunakan fungsi distribusi kumulatif normal standar.",
+    "refs_title": "Referensi",
+    "ref_who": "WHO Child Growth Standards (2006)",
+    "ref_cdc": "CDC Growth Charts (2000)",
+    "ref_kemenkes": "Kemenkes Standar Antropometri (2020)"
+  },
+  "ui": {
+    "back": "Kembali",
+    "toggle_theme": "Alihkan mode gelap",
+    "select_date": "Pilih tanggal...",
+    "no_results": "Tidak ada hasil",
+    "loading": "Memuat..."
+  },
+  "footer": {
+    "text": "EraTrack · 100% Privat · Data Tidak Meninggalkan Perangkat Anda"
+  }
+}
