@@ -5,6 +5,12 @@ const ResultsView = (() => {
     waist_to_hip:(p) => p.hip > 0 ? p.waist / p.hip : null
   };
 
+  const STATUS_EMOJI = {
+    severely_low: '🔴', low: '🟡', slightly_low: '🟢',
+    optimal: '🟢',
+    slightly_high: '🟢', high: '🟡', severely_high: '🔴'
+  };
+
   function getMetricValue(metricId, rawParams) {
     if (DERIVED_METRICS[metricId]) return DERIVED_METRICS[metricId](rawParams);
     const params = InputView.METRIC_PARAMS[metricId] || [];
@@ -27,18 +33,24 @@ const ResultsView = (() => {
         const config = getMetricConfig(metricId);
         r.label = config.label;
         r.unit = config.unit;
-        r.displayValue = value;
+        r.displayValue = DERIVED_METRICS[metricId]
+          ? Utils.roundTo(value, 1)
+          : Utils.roundTo(value, 1);
         results.push(r);
       }
     });
 
     if (results.length === 0) return;
 
-    const firstResult = results[0];
-    const cat = firstResult.category;
-    document.getElementById('resultEmoji').textContent = cat.emoji || '🌟';
-    document.getElementById('resultTitle').textContent = I18N.t(cat.titleKey || 'results.optimal_title');
-    document.getElementById('resultSubtitle').textContent = I18N.t(cat.subtitleKey || 'results.optimal_subtitle');
+    const worst = results.reduce((a, b) =>
+      (b.category.severity ?? 99) < (a.category.severity ?? 99) ? b : a
+    );
+    const cat = worst.category;
+
+    const heroEmoji = STATUS_EMOJI[cat.key] || '🌟';
+    document.getElementById('resultEmoji').textContent = heroEmoji;
+    document.getElementById('resultTitle').textContent = I18N.t('interpretations.' + cat.key + '_title', { metric: worst.label });
+    document.getElementById('resultSubtitle').textContent = I18N.t('interpretations.' + cat.key + '_desc', { metric: worst.label, percentile: worst.percentile });
 
     const chartsContainer = document.getElementById('resultsCharts');
     chartsContainer.innerHTML = '';
@@ -61,7 +73,11 @@ const ResultsView = (() => {
     renderInputsSection(rawParams);
     renderResultCards(results);
 
-    AppState.set('results', { metrics: results, title: I18N.t(cat.titleKey), subtitle: I18N.t(cat.subtitleKey) });
+    AppState.set('results', {
+      metrics: results,
+      title: I18N.t('interpretations.' + cat.key + '_title', { metric: worst.label }),
+      subtitle: I18N.t('interpretations.' + cat.key + '_desc', { metric: worst.label, percentile: worst.percentile })
+    });
   }
 
   function renderInputsSection(rawParams) {
@@ -83,7 +99,7 @@ const ResultsView = (() => {
     ];
     let hasAny = false;
     known.forEach(k => {
-      if (rawParams[k] != null) {
+      if (rawParams[k.key] != null) {
         hasAny = true;
         const card = document.createElement('div');
         card.className = 'result-card';
@@ -105,13 +121,21 @@ const ResultsView = (() => {
     for (const r of results) {
       const card = document.createElement('div');
       card.className = 'result-card';
-      const derivedNote = DERIVED_METRICS[r.metricId] ? `<div class="result-card__derived">${I18N.t('results.derived_from')}</div>` : '';
+      const cat = r.category;
+      const emoji = STATUS_EMOJI[cat.key] || '';
+      const derivedNote = DERIVED_METRICS[r.metricId]
+        ? `<div class="result-card__derived">${I18N.t('results.derived_from')}</div>`
+        : '';
       card.innerHTML = `
         <div class="result-card__label">${r.label}</div>
         <div class="result-card__value">${r.displayValue} ${r.unit}</div>
         ${derivedNote}
-        <div class="result-card__zscore">${I18N.t('results.zscore', { value: r.zScore })}</div>
-        <div class="result-card__zscore">${I18N.t('results.percentile', { value: r.percentile })}</div>
+        <div class="result-card__status result-card__status--${cat.key}">
+          ${emoji} ${I18N.t('interpretations.' + cat.key + '_title', { metric: r.label })}
+        </div>
+        <div class="result-card__interpretation">
+          ${I18N.t('interpretations.' + cat.key + '_desc', { metric: r.label, percentile: r.percentile })}
+        </div>
       `;
       cardsContainer.appendChild(card);
     }

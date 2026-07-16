@@ -44,18 +44,25 @@
     "used_by": "Digunakan oleh: {metrics}"
   },
   "results": {
-    "optimal_title": "Tumbuh Kuat & Tepat di Jalur!",
-    "optimal_subtitle": "Rentang Optimal (Dalam Persentil Normal)",
-    "high_title": "Menjulang Tinggi (Calon Atlet Masa Depan!)",
-    "high_subtitle": "Segmen Pertumbuhan Lanjutan",
-    "low_title": "Kecil namun Perkasa (Tumbuh dengan Ritme Sendiri)",
-    "low_subtitle": "Lintasan Pertumbuhan Unik",
     "new_measurement": "+ Pengukuran Baru",
-    "zscore": "Z-Score: {value}",
-    "percentile": "Persentil: {value}%",
-    "your_value": "{metric} Anda",
     "your_inputs": "Input Anda",
-    "derived_from": "Dihitung dari input Anda"
+    "derived_from": "Dihitung dari input Anda",
+    "interpretations": {
+      "severely_low_title": "Di bawah rata-rata",
+      "severely_low_desc": "{metric} anak Anda lebih rendah dari 99,9% anak seusianya. Pertimbangkan untuk berkonsultasi dengan tenaga kesehatan.",
+      "low_title": "Sedikit di bawah rata-rata",
+      "low_desc": "{metric} anak Anda lebih rendah dari yang diharapkan untuk usianya.",
+      "slightly_low_title": "Dalam rentang normal",
+      "slightly_low_desc": "{metric} anak Anda sedikit di bawah rata-rata namun masih dalam variasi normal.",
+      "optimal_title": "Dalam rentang sehat",
+      "optimal_desc": "{metric} anak Anda serupa dengan kebanyakan anak seusianya.",
+      "slightly_high_title": "Dalam rentang normal",
+      "slightly_high_desc": "{metric} anak Anda sedikit di atas rata-rata namun masih dalam variasi normal.",
+      "high_title": "Sedikit di atas rata-rata",
+      "high_desc": "{metric} anak Anda lebih tinggi dari yang diharapkan untuk usianya.",
+      "severely_high_title": "Di atas rata-rata",
+      "severely_high_desc": "{metric} anak Anda lebih tinggi dari 99,9% anak seusianya. Pertimbangkan untuk berkonsultasi dengan tenaga kesehatan."
+    }
   },
   "share": {
     "heading": "Bagikan Capaian Anda",

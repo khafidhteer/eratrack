@@ -4,12 +4,14 @@ const ChartRenderer = (() => {
     const style = getComputedStyle(document.documentElement);
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     return {
-      accent: style.getPropertyValue('--color-accent').trim() || (isDark ? '#00b4d8' : '#0f4c5c'),
       gold: style.getPropertyValue('--color-gold').trim() || (isDark ? '#f0c040' : '#b8860b'),
       text: style.getPropertyValue('--color-text').trim() || '#1a1a2e',
       muted: style.getPropertyValue('--color-text-muted').trim() || '#6b7280',
       grid: style.getPropertyValue('--color-border').trim() || '#e5e7eb',
-      bg: style.getPropertyValue('--color-bg-card').trim() || '#ffffff'
+      bg: style.getPropertyValue('--color-bg-card').trim() || '#ffffff',
+      green: '#22c55e',
+      threshold: 'rgba(239, 68, 68, 0.35)',
+      thresholdLabel: 'rgba(239, 68, 68, 0.6)'
     };
   }
 
@@ -89,19 +91,22 @@ const ChartRenderer = (() => {
     ctx.textAlign = 'left';
     ctx.fillText('Age (months)', pad.left + plotW / 2 - 30, h - 8);
 
-    drawCurve(p50, colors.accent, 2);
-    drawCurve(p5, colors.muted, 1);
-    drawCurve(p95, colors.muted, 1);
+    drawCurve(p5, colors.threshold, 1.5);
+    drawCurve(p95, colors.threshold, 1.5);
+    drawCurve(p50, colors.green, 2.5);
 
-    ctx.fillStyle = colors.muted;
+    ctx.fillStyle = colors.thresholdLabel;
     ctx.font = '9px sans-serif';
     ctx.textAlign = 'left';
     ctx.fillText('P5', pad.left + 2, yPos(p5[0]) - 4);
     ctx.fillText('P95', pad.left + 2, yPos(p95[0]) - 4);
+
+    ctx.fillStyle = colors.green;
+    ctx.font = 'bold 9px sans-serif';
+    ctx.textAlign = 'left';
     ctx.fillText('P50', pad.left + 2, yPos(p50[0]) - 4);
 
     if (userValue != null) {
-      const userAge = ages.includes(Math.round(userValue._age)) ? userValue._age : Math.round(userValue._age);
       const ux = xPos(userValue._age);
       const uy = yPos(userValue.v);
 
@@ -123,6 +128,35 @@ const ChartRenderer = (() => {
     ctx.font = 'bold 11px sans-serif';
     ctx.textAlign = 'left';
     ctx.fillText(metricLabel + ' (' + unit + ')', pad.left, 14);
+
+    const legendX = w - 100;
+    const legendY = 4;
+    ctx.fillStyle = 'rgba(255,255,255,0.85)';
+    ctx.fillRect(legendX, legendY, 90, 38);
+    ctx.strokeStyle = colors.grid;
+    ctx.lineWidth = 0.5;
+    ctx.strokeRect(legendX, legendY, 90, 38);
+
+    ctx.beginPath();
+    ctx.moveTo(legendX + 6, legendY + 14);
+    ctx.lineTo(legendX + 26, legendY + 14);
+    ctx.strokeStyle = colors.green;
+    ctx.lineWidth = 2.5;
+    ctx.stroke();
+    ctx.fillStyle = colors.green;
+    ctx.font = '9px sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText('Expected', legendX + 30, legendY + 17);
+
+    ctx.beginPath();
+    ctx.moveTo(legendX + 6, legendY + 30);
+    ctx.lineTo(legendX + 26, legendY + 30);
+    ctx.strokeStyle = colors.threshold;
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+    ctx.fillStyle = colors.thresholdLabel;
+    ctx.font = '9px sans-serif';
+    ctx.fillText('Threshold', legendX + 30, legendY + 33);
   }
 
   function renderChart(containerId, metricId, metricLabel, unit, dataPoints, userValue, ageMonths) {

@@ -8,15 +8,25 @@ const Calculator = (() => {
   }
 
   function getResultCategory(zScore) {
-    if (zScore === null || isNaN(zScore)) return { key: 'none', title: '', subtitle: '' };
-    if (zScore >= -1 && zScore <= 1) {
-      return { key: 'optimal', titleKey: 'results.optimal_title', subtitleKey: 'results.optimal_subtitle', emoji: '🌟' };
-    } else if (zScore > 1) {
-      return { key: 'high', titleKey: 'results.high_title', subtitleKey: 'results.high_subtitle', emoji: '🚀' };
-    } else {
-      return { key: 'low', titleKey: 'results.low_title', subtitleKey: 'results.low_subtitle', emoji: '💪' };
-    }
+    if (zScore === null || isNaN(zScore)) return { key: 'none', severity: -1 };
+    if (zScore < -3) return { key: 'severely_low', severity: 0 };
+    if (zScore < -2) return { key: 'low', severity: 1 };
+    if (zScore < -1) return { key: 'slightly_low', severity: 2 };
+    if (zScore <= 1) return { key: 'optimal', severity: 3 };
+    if (zScore <= 2) return { key: 'slightly_high', severity: 4 };
+    if (zScore <= 3) return { key: 'high', severity: 5 };
+    return { key: 'severely_high', severity: 6 };
   }
+
+  const SEVERITY_ORDER = {
+    severely_low: 0,
+    low: 1,
+    slightly_low: 2,
+    optimal: 3,
+    slightly_high: 4,
+    high: 5,
+    severely_high: 6
+  };
 
   function calculate(metricId, value, ageMonths, sex, country) {
     const lms = LookupEngine.lookupLMS(metricId, ageMonths, sex, country);
@@ -34,5 +44,5 @@ const Calculator = (() => {
     };
   }
 
-  return { calculate, getResultCategory };
+  return { calculate, getResultCategory, SEVERITY_ORDER };
 })();

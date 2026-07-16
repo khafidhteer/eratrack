@@ -44,18 +44,25 @@
     "used_by": "Used by: {metrics}"
   },
   "results": {
-    "optimal_title": "Growing Strong & Right on Track!",
-    "optimal_subtitle": "Optimal Range (Within Normal Centiles)",
-    "high_title": "Reaching for the Stars (Future Athlete Alert!)",
-    "high_subtitle": "Advanced Growth Segment",
-    "low_title": "Small and Mighty (Thriving at My Own Pace)",
-    "low_subtitle": "Unique Growth Trajectory",
     "new_measurement": "+ New Measurement",
-    "zscore": "Z-Score: {value}",
-    "percentile": "Percentile: {value}%",
-    "your_value": "Your {metric}",
     "your_inputs": "Your Inputs",
-    "derived_from": "Calculated from your inputs"
+    "derived_from": "Calculated from your inputs",
+    "interpretations": {
+      "severely_low_title": "Below average range",
+      "severely_low_desc": "Your child's {metric} is lower than 99.9% of children their age. Consider discussing with your healthcare provider.",
+      "low_title": "Slightly below average",
+      "low_desc": "Your child's {metric} is lower than expected for their age.",
+      "slightly_low_title": "Within normal range",
+      "slightly_low_desc": "Your child's {metric} is slightly below average but within normal variation.",
+      "optimal_title": "Within the healthy range",
+      "optimal_desc": "Your child's {metric} is similar to most children their age.",
+      "slightly_high_title": "Within normal range",
+      "slightly_high_desc": "Your child's {metric} is slightly above average but within normal variation.",
+      "high_title": "Slightly above average",
+      "high_desc": "Your child's {metric} is higher than expected for their age.",
+      "severely_high_title": "Above average range",
+      "severely_high_desc": "Your child's {metric} is higher than 99.9% of children their age. Consider discussing with your healthcare provider."
+    }
   },
   "share": {
     "heading": "Share Your Milestone",
